@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next){
-    res.redirect('/user/vote_auth');
+    res.redirect('/user/vote_auth' );
 });
 
 router.get('/vote_auth', function(req, res, next){
