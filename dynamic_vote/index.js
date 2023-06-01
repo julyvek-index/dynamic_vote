@@ -13,7 +13,7 @@ const { copyFileSync } = require('fs');
 const app = express();
 const server = http.createServer(app);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 const hostname = 'localhost';
 const port = 3000;

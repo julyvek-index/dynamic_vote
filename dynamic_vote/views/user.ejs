@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
   </head>
 
   <body>
@@ -9,7 +9,7 @@
         <div class="flex-auto bg-gray-200 h-full w-1/6">
           <div class="relative h-32 w-32 ...">
             <div class="left-0 top-0 h-24 w-64 animate-fade-in-up">
-              <img src="/img/png/5.png" alt="logo" />
+              <img src="/static/img/png/5.png" alt="logo" />
             </div>
           </div>
 
@@ -21,9 +21,10 @@
             <h2 class="mt-10 text-sm animate-fade-in-up">
               자신의 학번을 입력해주세요.
             </h2>
-            <form>
+            <form action="/vote_auth" method="post">
               <label class="block">
                 <input
+                name="std_id"
                   class="animate-fade-in-down mt-5 placeholder:text-slate-400 bg-white h-8 w-80 border border-slate-300 rounded-md py-2 pl-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                   placeholder="ex) 20213200008"
                   type="number"
