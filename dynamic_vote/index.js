@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const ejs = require('ejs');
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const authRouter = require('./router/auth');
@@ -12,6 +13,9 @@ const { copyFileSync } = require('fs');
 
 const app = express();
 const server = http.createServer(app);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
