@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS VOTE (StudentID VARCHAR(16) PRIMARY KEY, CandidateID VARCHAR(16), VoteDate TIMESTAMP, Rigged_vote tinyint(1), ip VARCHAR(30), environment VARCHAR(500));
+CREATE TABLE IF NOT EXISTS VOTE_INFO (StudentID VARCHAR(16) PRIMARY KEY, Vote_session_start TIMESTAMP, Vote_session_end TIMESTAMP, Early_deadline TIMESTAMP);
+CREATE TABLE IF NOT EXISTS Student (StudentID VARCHAR(16) PRIMARY KEY, Name VARCHAR(16), Authenticated TINYINT(1), isVoted TINYINT(1), DepartmentID VARCHAR(20));
+CREATE TABLE IF NOT EXISTS Candidate (CandidateID VARCHAR(16) PRIMARY KEY, promise VARCHAR(1000), Speech VARCHAR(1500), youtube_link VARCHAR(100), profile_card VARCHAR(30), profile_card_color VARCHAR(30));

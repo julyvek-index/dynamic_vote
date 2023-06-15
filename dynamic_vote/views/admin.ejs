@@ -1,1 +1,48 @@
-<h1>어드민</h1>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <title>로그인</title>
+  </head>
+
+  <body>
+    <div class="bg-white">
+      <div class="flex h-full divide-x">
+        <div class="flex-auto bg-gray-200 h-full w-1/6">
+          <div class="relative h-32 w-32 ...">
+            <div class="left-0 top-0 h-24 w-64 animate-fade-in-up">
+              <img src="/static/img/png/5.png" alt="logo" />
+            </div>
+          </div>
+
+          <div class="mt-20 text-center text-2xl">
+            <h1 class="font-bold animate-fade-in-up">
+              오산대학교 투표 관리자<br />
+            </h1>
+            <h2 class="mt-10 text-sm animate-fade-in-up">
+              자신의 학번을 입력해주세요.
+            </h2>
+            <form action="/user/vote_auth" method="post">
+              <label class="block">
+                <input
+                  name="std_id"
+                  class="animate-fade-in-down mt-5 placeholder:text-slate-400 bg-white h-8 w-80 border border-slate-300 rounded-md py-2 pl-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="ex) 20213200008"
+                  type="number"
+                />
+              </label>
+            </form>
+
+            <button
+              class="animate-fade-in-down mt-5 bg-indigo-500 rounded-lg h-8 w-40 font-thin text-white text-base focus:ring hover:bg-indigo-600 hover:-translate-y-0.5 transition motion-reduce:hover:translate-y-0 motion-reduce:transition-none ..."
+            >
+              확인
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex-auto bg-gray-900 h-full w-4/6 bg-[url('/static/img/jpg/loginpage_1.jpg')]"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>
