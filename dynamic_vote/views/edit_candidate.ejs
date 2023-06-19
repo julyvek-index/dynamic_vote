@@ -1,0 +1,534 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/index.css" />
+  </head>
+  <div class="min-h-full">
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <div
+              class="left-0 top-0 py-3 h-24 w-44 animate-fade-in-up"
+              onclick="window.location.href = '/admin/add_candidate'"
+            >
+              <svg
+                width="202"
+                height="86"
+                viewBox="0 0 202 86"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <rect y="-17" width="202" height="103" fill="url(#pattern0)" />
+                <defs>
+                  <pattern
+                    id="pattern0"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+                  >
+                    <use
+                      xlink:href="#image0_3_2314"
+                      transform="matrix(0.0025495 0 0 0.005 -0.00990099 0)"
+                    />
+                  </pattern>
+                  <image
+                    id="image0_3_2314"
+                    width="400"
+                    height="200"
+                    xlink:href="data:image/png;base64,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"
+                  />
+                </defs>
+              </svg>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a
+                  href="#"
+                  class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  aria-current="page"
+                  >투표 후보자 설정</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >투표 내역</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >세부 설정</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6">
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <a
+                    href="#"
+                    class="bg-gray-300 text-black rounded-md px-3 py-2 text-sm font-medium"
+                    aria-current="page"
+                    >투표 시작</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a
+            href="#"
+            class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page"
+            >투표 후보자 설정</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >투표 내역</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >세부 설정</a
+          >
+        </div>
+        <div class="border-t border-gray-700 pb-3 pt-4">
+          <div class="mt-3 space-y-1 px-2">
+            <a
+              href="#"
+              class="bg-gray-300 text-black rounded-md px-3 py-2 text-sm font-medium"
+              aria-current="page"
+              >투표 시작</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="max-w-screen-xl mx-auto px-4">
+      <!-- Grid wrapper -->
+      <div class="-mx-4 flex flex-wrap">
+        <!-- Grid column -->
+        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
+          <!-- Column contents -->
+          <div
+            id="card_preview"
+            class="h-96 px-10 py-12 mt-20 bg-white rounded-lg shadow-lg"
+          >
+            <div class="max-w-xs">
+              <div class="bg-white shadow-xl rounded-lg py-3">
+                <div class="photo-wrapper p-2">
+                  <img
+                    class="w-32 h-32 rounded-full mx-auto"
+                    src="/static/img/png/user.png"
+                    alt="user_preview"
+                  />
+                </div>
+                <div class="mt-4 p-2">
+                  <h3
+                    id="name_preview"
+                    class="text-center text-xl text-gray-900 font-bold leading-8"
+                  >
+                    홍길동
+                  </h3>
+                  <div
+                    id="explain_preview"
+                    class="text-center text-gray-400 text-xs font-semibold"
+                  >
+                    <p>
+                      안녕하세요 오산대학교 43대 학회장 후보자 홍길동 입니다.
+                    </p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="mt-10 block w-full bg-gray-900 rounded-md bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    자세히 보기
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
+          <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <div
+              class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+              aria-hidden="true"
+            >
+              <div
+                class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+                style="
+                  clip-path: polygon(
+                    74.1% 44.1%,
+                    100% 61.6%,
+                    97.5% 26.9%,
+                    85.5% 0.1%,
+                    80.7% 2%,
+                    72.5% 32.5%,
+                    60.2% 62.4%,
+                    52.4% 68.1%,
+                    47.5% 58.3%,
+                    45.2% 34.5%,
+                    27.5% 76.7%,
+                    0.1% 64.9%,
+                    17.9% 100%,
+                    27.6% 76.8%,
+                    76.1% 97.7%,
+                    74.1% 44.1%
+                  );
+                "
+              ></div>
+            </div>
+            <div class="mx-auto max-w-2xl text-center">
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                후보자 설정
+              </h2>
+              <p class="mt-2 text-lg leading-8 text-gray-600">
+                후보자 이름, 설명, 사진, 색상, 연설, 공약은 필수 입니다.
+              </p>
+            </div>
+            <form
+              action="#"
+              method="POST"
+              class="mx-auto mt-16 max-w-xl sm:mt-20"
+            >
+              <div
+                class="grid mt-10 grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
+              >
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    이름</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      placeholder=" ex ) 홍길동"
+                      class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      oninput="updatePreview('name_preview', this.value)"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="explain"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >후보자 설명 (간략)
+                  </label>
+                  <div class="mt-2.5">
+                    <input
+                      type="text"
+                      name="explain"
+                      id="last-name"
+                      autocomplete="family-name"
+                      class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      oninput="updatePreview('explain_preview', this.value)"
+                    />
+                  </div>
+                </div>
+                <div class="sm:col-span-2">
+                  <label
+                    for="photo"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >후보자 사진 첨부</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="file"
+                      name="company"
+                      id="company"
+                      autocomplete="organization"
+                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div class="sm:col-span-2">
+                  <label
+                    for="email"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >후보자 [자세히 보기 카드 색상] (하단 클릭으로 변경)</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="color"
+                      name="email"
+                      id="email"
+                      autocomplete="email"
+                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onchange="changeBackgroundColor('card_preview', this.value)"
+                    />
+                  </div>
+                </div>
+                <div class="sm:col-span-2">
+                  <label
+                    for="color_hash"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >#32323232</label
+                  >
+                </div>
+                <div class="sm:col-span-2">
+                  <label
+                    for="message"
+                    class="mt-10 block text-sm font-semibold leading-6 text-gray-900"
+                    >후보자 연설</label
+                  >
+                  <div class="mt-2.5">
+                    <textarea
+                      name="message"
+                      id="message"
+                      rows="4"
+                      class="block w-full bg-gray-200 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="flex gap-x-4 sm:col-span-2">
+                  <label
+                    class="text-sm leading-6 text-gray-600"
+                    id="switch-1-label"
+                  >
+                    후보자 연설은 최대 5000자까지 입력 가능합니다.
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
+          <!-- Column contents -->
+          <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <div
+              class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+              aria-hidden="true"
+            >
+              <div
+                class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+                style="
+                  clip-path: polygon(
+                    74.1% 44.1%,
+                    100% 61.6%,
+                    97.5% 26.9%,
+                    85.5% 0.1%,
+                    80.7% 2%,
+                    72.5% 32.5%,
+                    60.2% 62.4%,
+                    52.4% 68.1%,
+                    47.5% 58.3%,
+                    45.2% 34.5%,
+                    27.5% 76.7%,
+                    0.1% 64.9%,
+                    17.9% 100%,
+                    27.6% 76.8%,
+                    76.1% 97.7%,
+                    74.1% 44.1%
+                  );
+                "
+              ></div>
+            </div>
+            <form
+              action="#"
+              method="POST"
+              class="mx-auto mt-16 max-w-xl sm:mt-20"
+            >
+              <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="first-name"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >후보자 공약 (최대 6개)</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="text"
+                      name="promise-1"
+                      id="promise-1"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 첫번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <input
+                      type="text"
+                      name="promise-2"
+                      id="promise-2"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 두번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <input
+                      type="text"
+                      name="promise-3"
+                      id="promise-3"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 세번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <input
+                      type="text"
+                      name="promise-4"
+                      id="promise-4"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 네번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <input
+                      type="text"
+                      name="promise-5"
+                      id="promise-5"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 다섯번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <input
+                      type="text"
+                      name="promise-6"
+                      id="promise-6"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 여섯번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+
+                    <label
+                      for="first-name"
+                      class="mt-10 block text-sm font-semibold leading-6 text-gray-900"
+                      >후보자 투표 기한</label
+                    >
+                    <input
+                      type="date"
+                      name="vote_expiration"
+                      id="vote_expiration"
+                      autocomplete="given-name"
+                      placeholder="ex) 제 여섯번째 공약은..."
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+
+                    <label
+                      for="expiration_time"
+                      class="mt-10 block text-sm font-semibold leading-6 text-gray-900"
+                      >투표 마감 시간</label
+                    >
+                    <input
+                      type="time"
+                      name="vote_expiration_hour"
+                      id="vote_expiration_hour"
+                      autocomplete="given-name"
+                      class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                    <label
+                      for="esplain"
+                      class="block text-sm font-semibold leading-6 text-gray-900"
+                      >설정하지 않을 경우 0시로 고정됩니다.</label
+                    >
+                    <button
+                      type="button"
+                      onclick="openModal()"
+                      class="mt-10 block w-full bg-gray-900 rounded-md bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                      제출
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <h2>모달 창</h2>
+    <p>제출 하시겠습니까?</p>
+    <div class="modal-buttons">
+      <button onclick="confirmSubmission(true)">예</button>
+      <button onclick="confirmSubmission(false)">아니오</button>
+    </div>
+  </div>
+</div>
+<script>
+  const on_edit = () => {
+    location.href = "/admin/edit_candidate";
+  };
+  const updatePreview = (elementId, value) => {
+    document.getElementById(elementId).innerText = value;
+  };
+  const changeBackgroundColor = (elementId, color) => {
+    document.getElementById(elementId).style.fo = color;
+  };
+
+  function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
+
+  // 제출 확인
+  function confirmSubmission(isConfirmed) {
+    if (isConfirmed) {
+      // 예 버튼 클릭 시 처리할 동작
+      alert("제출되었습니다.");
+    } else {
+      // 아니오 버튼 클릭 시 처리할 동작
+      alert("제출이 취소되었습니다.");
+    }
+
+    // 모달 닫기
+    closeModal();
+  }
+
+  // 모달 닫기
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+<style>
+  /* Modal 스타일 */
+  .modal {
+    display: none; /* 기본적으로 모달은 숨김 상태 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+    z-index: 9999;
+  }
+
+  .modal-content {
+    background-color: #fff;
+    width: 300px;
+    max-width: 80%;
+    margin: 200px auto; /* 모달을 화면 중앙에 위치시킴 */
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* 버튼 스타일 */
+  .modal-buttons button {
+    margin: 0 10px;
+  }
+</style>

@@ -36,9 +36,21 @@ router.post('/auth', function (req, res, next) {
 });
 
 router.get('/add_candidate', function (req, res, next) {
-    if (!req.session.studentId)
-        res.render('add_candidate');
-    else
+    if (!req.session.studentId) {
         res.render('admin');
+    }
+    else {
+        res.render('add_candidate');
+    }
+});
+
+
+router.get('/edit_candidate', function (req, res, next) {
+    if (!req.session.studentId) {
+        res.render('admin');
+    }
+    else {
+        res.render('edit_candidate');
+    }
 });
 module.exports = router;

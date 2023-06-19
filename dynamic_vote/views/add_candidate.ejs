@@ -7,7 +7,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
-            <div class="left-0 top-0 py-3 h-24 w-64 animate-fade-in-up">
+            <div class="left-0 top-0 py-3 h-24 w-44 animate-fade-in-up">
               <svg
                 width="202"
                 height="86"
@@ -122,6 +122,7 @@
               src="/static/img/png/plus.png"
               alt="Plus Icon"
               class="mx-auto"
+              onclick="on_edit()"
             />
           </div>
         </div>
@@ -133,6 +134,7 @@
               src="/static/img/png/plus.png"
               alt="Plus Icon"
               class="mx-auto"
+              onclick="on_edit()"
             />
           </div>
         </div>
@@ -144,6 +146,7 @@
               src="/static/img/png/plus.png"
               alt="Plus Icon"
               class="mx-auto"
+              onclick="on_edit()"
             />
           </div>
         </div>
@@ -151,3 +154,9 @@
     </div>
   </div>
 </html>
+
+<script>
+  const on_edit = () => {
+    location.href = "/admin/edit_candidate";
+  };
+</script>

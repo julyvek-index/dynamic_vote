@@ -3,6 +3,11 @@ module.exports = {
     content: ["./public/**/*.{html,js}"],
     theme: {
         extend: {
+            height: {
+                '120': '30rem', // This will create a new class `h-120` which corresponds to height of 30rem
+                '144': '36rem', // This will create a new class `h-144` which corresponds to height of 36rem
+                // Add more as per your requirements
+            },
             keyframes: {
                 'fade-in-down': {
                     '0%': {
