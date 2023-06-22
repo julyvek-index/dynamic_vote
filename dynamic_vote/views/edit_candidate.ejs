@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <div class="min-h-full">
     <nav class="bg-gray-800">
@@ -114,48 +115,70 @@
         </div>
       </div>
     </nav>
-    <div class="max-w-screen-xl mx-auto px-4">
+    <div class="mt-10 ml-10 max-w-screen-x2 mx-auto px-4 justify-content">
       <!-- Grid wrapper -->
-      <div class="-mx-4 flex flex-wrap">
+      <div class="flex flex-wrap justify-content">
         <!-- Grid column -->
-        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
-          <!-- Column contents -->
-          <div
-            id="card_preview"
-            class="h-96 px-10 py-12 mt-20 bg-white rounded-lg shadow-lg"
-          >
-            <div class="max-w-xs">
-              <div class="bg-white shadow-xl rounded-lg py-3">
-                <div class="photo-wrapper p-2">
+        <div
+          class="mt-10 ml-4 mr-4 bg-white rounded-xl shadow-md overflow-hidden md:max-w-md flex flex-col p-4 px-4 sm:w-1/2 lg:w-1/3 animate-fade-in-up"
+        >
+          <div class="md:flex">
+            <div class="w-full p-2 px-4 py-10">
+              <div class="flex justify-center">
+                <div class="relative">
                   <img
-                    class="w-32 h-32 rounded-full mx-auto"
+                    id="user_preview"
                     src="/static/img/png/user.png"
+                    class="rounded-full"
                     alt="user_preview"
+                    width="80"
                   />
                 </div>
-                <div class="mt-4 p-2">
-                  <h3
-                    id="name_preview"
-                    class="text-center text-xl text-gray-900 font-bold leading-8"
-                  >
-                    홍길동
-                  </h3>
-                  <div
-                    id="explain_preview"
-                    class="text-center text-gray-400 text-xs font-semibold"
-                  >
-                    <p>
-                      안녕하세요 오산대학교 43대 학회장 후보자 홍길동 입니다.
-                    </p>
-                  </div>
+              </div>
 
-                  <button
-                    type="submit"
-                    class="mt-10 block w-full bg-gray-900 rounded-md bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    자세히 보기
-                  </button>
-                </div>
+              <div class="flex flex-col text-center mt-3 mb-4">
+                <span id="name_preview" class="text-2xl font-medium">이름</span>
+                <span class="text-md text-gray-400">영문 이름</span>
+              </div>
+
+              <p
+                id="explain_preview"
+                class="px-16 text-center text-md text-gray-800"
+              >
+                후보자 설명
+              </p>
+
+              <div class="px-16 mt-3 text-center">
+                <span
+                  id="hash_tag_1"
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#근면</span
+                >
+                <span
+                  id="hash_tag_2"
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#성실</span
+                >
+                <span
+                  id="hash_tag_3"
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#책무</span
+                >
+              </div>
+
+              <div class="px-14 mt-5">
+                <button
+                  class="h-12 bg-gray-200 w-full text-black text-md rounded hover:shadow hover:bg-gray-300 mb-2"
+                  onclick="detail_modal_open()"
+                >
+                  자세히 보기
+                </button>
+
+                <button
+                  class="h-12 bg-blue-700 w-full text-white text-md rounded hover:shadow hover:bg-blue-800"
+                >
+                  투표 하기
+                </button>
               </div>
             </div>
           </div>
@@ -214,34 +237,69 @@
                     for="name"
                     class="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    이름</label
+                    이름 (필수)</label
                   >
                   <div class="mt-2.5">
                     <input
                       type="text"
-                      name="first-name"
-                      id="first-name"
+                      name="input_name"
+                      id="input_name"
                       autocomplete="given-name"
                       placeholder=" ex ) 홍길동"
                       class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       oninput="updatePreview('name_preview', this.value)"
                     />
                   </div>
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-semibold leading-6 text-gray-900"
+                    >
+                      해시 태그</label
+                    >
+                    <div class="mt-2.5">
+                      <input
+                        type="text"
+                        name="input_hash_tag_1"
+                        id="input_hash_tag_1"
+                        placeholder=" ex ) 근면"
+                        class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        oninput="updatePreview('hash_tag_1', ('#' +this.value))"
+                      />
+                      <input
+                        type="text"
+                        name="input_hash_tag_2"
+                        id="input_hash_tag_2"
+                        placeholder=" ex ) 성실"
+                        class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        oninput="updatePreview('hash_tag_2', ('#' +this.value))"
+                      />
+                      <input
+                        type="text"
+                        name="input_hash_tag_3"
+                        id="input_hash_tag_3"
+                        placeholder=" ex ) 책무"
+                        class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        oninput="updatePreview('hash_tag_3', ('#' +this.value))"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label
                     for="explain"
+                    id="letter-limit"
                     class="block text-sm font-semibold leading-6 text-gray-900"
-                    >후보자 설명 (간략)
+                    >후보자 설명 (간략) [35 글자 제한] (필수)
                   </label>
                   <div class="mt-2.5">
                     <input
                       type="text"
-                      name="explain"
-                      id="last-name"
+                      name="input_explain"
+                      id="input_explain"
                       autocomplete="family-name"
                       class="block bg-gray-200 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      oninput="updatePreview('explain_preview', this.value)"
+                      oninput="updatePreview_explain('explain_preview', this.value)"
                     />
                   </div>
                 </div>
@@ -249,13 +307,14 @@
                   <label
                     for="photo"
                     class="block text-sm font-semibold leading-6 text-gray-900"
-                    >후보자 사진 첨부</label
+                    >후보자 사진 첨부 (필수)</label
                   >
                   <div class="mt-2.5">
                     <input
                       type="file"
-                      name="company"
-                      id="company"
+                      name="input_photo"
+                      id="input_photo"
+                      accept="image/*"
                       autocomplete="organization"
                       class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -263,47 +322,81 @@
                 </div>
                 <div class="sm:col-span-2">
                   <label
-                    for="email"
+                    for="color"
                     class="block text-sm font-semibold leading-6 text-gray-900"
-                    >후보자 [자세히 보기 카드 색상] (하단 클릭으로 변경)</label
+                    >시그니처 컬러 [자세히 보기 카드 색상] (하단 클릭으로
+                    변경)</label
                   >
                   <div class="mt-2.5">
                     <input
                       type="color"
-                      name="email"
-                      id="email"
-                      autocomplete="email"
+                      name="input_color"
+                      id="input_color"
                       class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      onchange="changeBackgroundColor('card_preview', this.value)"
+                      onchange="update_color_preview('color_hash', this.value)"
                     />
                   </div>
                 </div>
                 <div class="sm:col-span-2">
                   <label
                     for="color_hash"
+                    id="color_hash"
                     class="block text-sm font-semibold leading-6 text-gray-900"
                     >#32323232</label
                   >
+                </div>
+
+                <div class="mt-3 sm:col-span-2">
+                  <label
+                    for="color"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >학번</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="number"
+                      name="studnum"
+                      id="studnum"
+                      class="block w-full bg-gray-200 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label
+                    for="color"
+                    class="block text-sm font-semibold leading-6 text-gray-900"
+                    >학번 확인</label
+                  >
+                  <div class="mt-2.5">
+                    <input
+                      type="number"
+                      name="check_studnum"
+                      id="check_studnum"
+                      class="block w-full bg-gray-200 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
                 </div>
                 <div class="sm:col-span-2">
                   <label
                     for="message"
                     class="mt-10 block text-sm font-semibold leading-6 text-gray-900"
-                    >후보자 연설</label
+                    >후보자 연설 (필수)</label
                   >
                   <div class="mt-2.5">
                     <textarea
-                      name="message"
-                      id="message"
+                      name="input_message"
+                      id="input_message"
                       rows="4"
                       class="block w-full bg-gray-200 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onchange="update_details_preview('detailed_explain', this.value)"
                     ></textarea>
                   </div>
                 </div>
                 <div class="flex gap-x-4 sm:col-span-2">
                   <label
                     class="text-sm leading-6 text-gray-600"
-                    id="switch-1-label"
+                    id="message_maximum_char"
                   >
                     후보자 연설은 최대 5000자까지 입력 가능합니다.
                   </label>
@@ -354,7 +447,7 @@
                   <label
                     for="first-name"
                     class="block text-sm font-semibold leading-6 text-gray-900"
-                    >후보자 공약 (최대 6개)</label
+                    >후보자 공약 (최소 1개)</label
                   >
                   <div class="mt-2.5">
                     <input
@@ -407,7 +500,7 @@
                     />
 
                     <label
-                      for="first-name"
+                      for="vote_expiration"
                       class="mt-10 block text-sm font-semibold leading-6 text-gray-900"
                       >후보자 투표 기한</label
                     >
@@ -427,9 +520,8 @@
                     >
                     <input
                       type="time"
-                      name="vote_expiration_hour"
-                      id="vote_expiration_hour"
-                      autocomplete="given-name"
+                      name="vote_expiration_time"
+                      id="vote_expiration_time"
                       class="bg-gray-200 block w-full rounded-md mt-5 border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     <label
@@ -457,23 +549,223 @@
 
 <div id="myModal" class="modal">
   <div class="modal-content">
-    <h2>모달 창</h2>
+    <h2>제출 확인.</h2>
     <p>제출 하시겠습니까?</p>
     <div class="modal-buttons">
-      <button onclick="confirmSubmission(true)">예</button>
-      <button onclick="confirmSubmission(false)">아니오</button>
+      <button
+        onclick="confirmSubmission(true)"
+        class="bg-gray-900 rounded-md bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        예
+      </button>
+      <button
+        onclick="confirmSubmission(false)"
+        class="bg-gray-900 rounded-md bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        아니요
+      </button>
     </div>
   </div>
 </div>
+
+<div
+  id="detail_modal"
+  class="overflow-y-auto sm:p-0 pt-4 pr-4 pb-20 pl-4 bg-gray-800"
+>
+  <div class="flex justify-center items-end text-center min-h-screen sm:block">
+    <div class="bg-gray-600 transition-opacity bg-opacity-75"></div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+    <div
+      class="inline-block text-left bg-gray-900 rounded-lg overflow-hidden align-bottom transition-all transform shadow-2xl sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
+      id="detail_profile_view"
+    >
+      <div
+        class="items-center w-full mr-auto ml-auto relative max-w-7xl md:px-12 lg:px-24"
+      >
+        <div class="grid grid-cols-1">
+          <div
+            class="mt-4 mr-auto mb-4 ml-auto bg-gray-900 max-w-lg"
+            id="detail_profile_view"
+          >
+            <div class="flex flex-col items-center pt-6 pr-6 pb-6 pl-6">
+              <img
+                id="detailed_profile"
+                src="/static/img/png/user.png"
+                class="flex-shrink-0 object-cover object-center btn- flex w-16 h-16 mr-auto -mb-8 ml-auto rounded-full shadow-xl"
+              />
+              <p
+                id="detailed_name"
+                class="mt-8 text-2xl font-semibold leading-none text-white tracking-tighter lg:text-3xl"
+              >
+                이름
+              </p>
+              <p
+                id="detailed_explain"
+                class="mt-3 text-base leading-relaxed text-center text-gray-200"
+              >
+                안녕하십니까 저는 오산대학교 차기 학회장 홍길동입니다.
+              </p>
+
+              <p
+                id="detailed_promise"
+                class="mt-3 text-base leading-relaxed text-center text-gray-200"
+              >
+                주요 공약:
+                <br />
+                1.이자리에 입력한 공약들이 표시됩니다.<br />
+                2.이자리에 입력한 공약들이 표시됩니다 <br />
+                3.이자리에 입력한 공약들이 표시됩니다
+              </p>
+
+              <p
+                id="detailed_time"
+                class="mt-3 text-base leading-relaxed text-center text-gray-200"
+              >
+                투표 마감 시간: 2022/06/22 오후 7:15
+              </p>
+              <div class="w-full mt-6">
+                <a
+                  class="flex text-center items-center justify-center w-full pt-4 pr-10 pb-4 pl-10 text-base font-medium text-white bg-indigo-600 rounded-xl transition duration-500 ease-in-out transform hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onclick="detail_modal_close()"
+                  style="cursor: pointer"
+                  >확인 완료!</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  const MAX_CHAR_LIMIT = 35;
+
   const on_edit = () => {
     location.href = "/admin/edit_candidate";
   };
   const updatePreview = (elementId, value) => {
+    if (value.length > MAX_CHAR_LIMIT) {
+      alert("글자수 제한을 초과했습니다.");
+      value = value.substring(0, MAX_CHAR_LIMIT);
+    }
     document.getElementById(elementId).innerText = value;
+  };
+
+  const updatePreview_explain = (elementId, value) => {
+    if (value.length > MAX_CHAR_LIMIT) {
+      alert("글자수 제한을 초과했습니다.");
+      value = value.substring(0, MAX_CHAR_LIMIT);
+    }
+    document.getElementById(
+      "letter-limit"
+    ).innerHTML = `후보자 설명 (간략) [${value.length} / 35 글자 제한]`;
+    document.getElementById(elementId).innerText = value;
+  };
+
+  update_details_preview = (elementId, value) => {
+    document.getElementById(elementId).innerText = value;
+  };
+
+  const update_color_preview = (elementId, value) => {
+    document.getElementById(elementId).style.color = value;
+    document.getElementById(elementId).innerHTML = value;
   };
   const changeBackgroundColor = (elementId, color) => {
     document.getElementById(elementId).style.fo = color;
+  };
+
+  const submit_data = () => {
+    var name = $("#input_name").val();
+    var hash_tag_1 = $("#input_hash_tag_1").val();
+    var hash_tag_2 = $("#input_hash_tag_2").val();
+    var hash_tag_3 = $("#input_hash_tag_3").val();
+    var explain = $("#input_explain").val();
+    var photoInput = $("#input_photo")[0];
+    var color = $("#input_color").val();
+    var studnum = $("#studnum").val();
+    var studnum_chk = $("#check_studnum").val();
+    var message = $("#input_message").val();
+    var promise1 = $("#promise-1").val();
+    var promise2 = $("#promise-2").val();
+    var promise3 = $("#promise-3").val();
+    var promise4 = $("#promise-4").val();
+    var promise5 = $("#promise-5").val();
+    var promise6 = $("#promise-6").val();
+    var voteExpiration = $("#vote_expiration").val();
+    var voteExpirationTime = $("#vote_expiration_time").val();
+
+    console.log(studnum, studnum_chk, studnum_chk == studnum);
+    if (studnum != studnum_chk) {
+      return alert("학번 확인 필드와 학번이 일치하지 않습니다.");
+    }
+    // 필수 입력 필드 확인
+    if (!name || !explain || !photoInput.files[0] || !message) {
+      alert("필수 입력 필드를 모두 채워주세요.");
+      return;
+    }
+
+    if (
+      !promise1 &&
+      !promise2 &&
+      !promise3 &&
+      !promise4 &&
+      !promise5 &&
+      !promise6
+    ) {
+      // 최소 1개 이상의 Promise 입력 확인
+      alert("공약을 최소 1개 이상 입력해주세요.");
+      return;
+    }
+
+    // 투표 마감 기한 확인
+    var currentDateTime = new Date().toISOString();
+    var selectedDateTime = new Date(
+      voteExpiration + " " + voteExpirationTime
+    ).toISOString();
+    if (selectedDateTime <= currentDateTime) {
+      alert("유효한 투표 마감 기한을 선택해주세요.");
+      return;
+    }
+    console.log(hash_tag_1, hash_tag_2, hash_tag_3);
+    // FormData 생성
+    var formData = new FormData();
+    formData.append("name", name);
+    formData.append("hash_tag_1", hash_tag_1);
+    formData.append("hash_tag_2", hash_tag_2);
+    formData.append("hash_tag_3", hash_tag_3);
+    formData.append("explain", explain);
+    formData.append("input_photo", photoInput.files[0]);
+    formData.append("color", color);
+    formData.append("stdnum", studnum);
+    formData.append("message", message);
+    formData.append("promise1", promise1);
+    formData.append("promise2", promise2);
+    formData.append("promise3", promise3);
+    formData.append("promise4", promise4);
+    formData.append("promise5", promise5);
+    formData.append("promise6", promise6);
+    formData.append("voteExpiration", voteExpiration);
+    formData.append("voteExpirationTime", voteExpirationTime);
+
+    // AJAX 요청 보내기
+    $.ajax({
+      url: "/admin/submit-candidate", // 서버의 엔드포인트 URL
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        // 요청이 성공적으로 완료됐을 때 실행할 코드
+        console.log(response.message);
+        alert(response.message);
+      },
+      error: function (xhr, status, error) {
+        // 요청이 실패했을 때 실행할 코드
+        console.error(error);
+      },
+    });
   };
 
   function openModal() {
@@ -483,8 +775,7 @@
   // 제출 확인
   function confirmSubmission(isConfirmed) {
     if (isConfirmed) {
-      // 예 버튼 클릭 시 처리할 동작
-      alert("제출되었습니다.");
+      submit_data();
     } else {
       // 아니오 버튼 클릭 시 처리할 동작
       alert("제출이 취소되었습니다.");
@@ -493,11 +784,40 @@
     // 모달 닫기
     closeModal();
   }
-
   // 모달 닫기
   function closeModal() {
     document.getElementById("myModal").style.display = "none";
   }
+  function detail_modal_open() {
+    document.getElementById("detail_modal").style.display = "block";
+  }
+  function detail_modal_close() {
+    document.getElementById("detail_modal").style.display = "none";
+  }
+</script>
+
+<script>
+  $(document).ready(function () {
+    // 파일 입력 필드 변경 시 실행되는 이벤트 핸들러
+    $("#input_photo").change(function () {
+      var input = this;
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          // 이미지를 업데이트할 요소 선택
+          var imgElement = document.querySelector("#user_preview");
+          var imgElement2 = document.querySelector("#detailed_profile");
+          // 이미지 업데이트
+          imgElement.src = e.target.result;
+          imgElement2.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  });
 </script>
 <style>
   /* Modal 스타일 */
@@ -514,7 +834,7 @@
 
   .modal-content {
     background-color: #fff;
-    width: 300px;
+    width: 500px;
     max-width: 80%;
     margin: 200px auto; /* 모달을 화면 중앙에 위치시킴 */
     padding: 20px;
@@ -530,5 +850,16 @@
   /* 버튼 스타일 */
   .modal-buttons button {
     margin: 0 10px;
+  }
+
+  #detail_modal {
+    display: none; /* 기본적으로 모달은 숨김 상태 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+    z-index: 9999;
   }
 </style>

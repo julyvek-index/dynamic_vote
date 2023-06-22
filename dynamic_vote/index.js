@@ -15,6 +15,8 @@ const sessionsRouter = require('./router/sessions');
 const app = express();
 const server = http.createServer(app);
 
+
+
 app.use(session({
     secret: 'secretkey',
     resave: false,
@@ -53,7 +55,7 @@ const Table = {
     VOTE: "StudentID VARCHAR(16) PRIMARY KEY, CandidateID VARCHAR(16), VoteDate TIMESTAMP, Rigged_vote tinyint(1), ip VARCHAR(30), environment VARCHAR(500)",
     VOTE_INFO: "StudentID VARCHAR(16) PRIMARY KEY, Vote_session_start TIMESTAMP, Vote_session_end TIMESTAMP, Early_deadline TIMESTAMP",
     Student: "StudentID VARCHAR(16) PRIMARY KEY, Name VARCHAR(16), Authenticated TINYINT(1), isVoted TINYINT(1), DepartmentID VARCHAR(20)",
-    Candidate: "CandidateID VARCHAR(16) PRIMARY KEY, promise VARCHAR(1000), Speech VARCHAR(1500), youtube_link VARCHAR(100), profile_card VARCHAR(30), profile_card_color VARCHAR(30)"
+    Candidate: "CandidateID VARCHAR(16) PRIMARY KEY, name VARCHAR(15), hash_tag VARCHAR(300), promise VARCHAR(1000), Speech VARCHAR(1500), message VARCHAR(5000), youtube_link VARCHAR(100), profile_card VARCHAR(55), profile_card_color VARCHAR(30)"
 };
 
 Object.keys(Table).forEach((table) => {
@@ -83,6 +85,10 @@ app.set('views', './views');
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
+    console.log("======================================================")
+    console.log(`Admin Pages running at http://${hostname}:${port}/admin`)
+    console.log("======================================================")
+    console.log(`User Pages running at http://${hostname}:${port}/user`)
 });
 
 module.exports = app;

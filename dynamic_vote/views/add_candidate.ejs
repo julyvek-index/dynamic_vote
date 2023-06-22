@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <div class="min-h-full">
     <nav class="bg-gray-800">
@@ -111,52 +112,263 @@
         </div>
       </div>
     </nav>
-    <div class="max-w-screen-xl mx-auto px-4">
+    <div class="mt-10 max-w-screen-x2 mx-auto px-4">
       <!-- Grid wrapper -->
-      <div class="-mx-4 flex flex-wrap">
+      <div id="profile_card_wrap" class="flex flex-wrap justify-center">
         <!-- Grid column -->
-        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
-          <!-- Column contents -->
-          <div class="h-96 px-10 py-12 mt-20 bg-white rounded-lg shadow-lg">
-            <img
-              src="/static/img/png/plus.png"
-              alt="Plus Icon"
-              class="mx-auto"
-              onclick="on_edit()"
-            />
-          </div>
-        </div>
-        <!-- Grid column -->
-        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
-          <!-- Column contents -->
-          <div class="h-96 px-10 py-12 mt-20 bg-white rounded-lg shadow-lg">
-            <img
-              src="/static/img/png/plus.png"
-              alt="Plus Icon"
-              class="mx-auto"
-              onclick="on_edit()"
-            />
-          </div>
-        </div>
-        <!-- Grid column -->
-        <div class="w-full flex flex-col p-4 sm:w-1/2 lg:w-1/3">
-          <!-- Column contents -->
-          <div class="h-96 px-10 py-12 mt-20 bg-white rounded-lg shadow-lg">
-            <img
-              src="/static/img/png/plus.png"
-              alt="Plus Icon"
-              class="mx-auto"
-              onclick="on_edit()"
-            />
-          </div>
-        </div>
       </div>
     </div>
   </div>
+
+  <div id="modallist"></div>
 </html>
 
 <script>
   const on_edit = () => {
     location.href = "/admin/edit_candidate";
+  };
+
+  function detail_modal_open(args) {
+    document.getElementById("detail_modal_" + args).style.display = "block";
+  }
+  function detail_modal_close(args) {
+    document.getElementById("detail_modal_" + args).style.display = "none";
+  }
+
+  window.onload = () => {
+    const onload = () => {
+      let profile_card_wrap = document.getElementById("profile_card_wrap");
+      let modallist = document.getElementById("modallist");
+      let profile_card = `
+
+         <div
+          class="mt-10 ml-4 mr-4 bg-white rounded-xl shadow-md overflow-hidden md:max-w-md flex flex-col p-4 px-4 sm:w-1/2 lg:w-1/3"
+        >
+          <div class="md:flex">
+            <div class="w-full p-2 px-4 py-10 ">
+              <div class="flex justify-center">
+                <div class="relative">
+                  <img
+                    src="/static/img/png/user.png"
+                    class="rounded-full"
+                    width="80"
+                  />
+                </div>
+              </div>
+
+              <div class="flex flex-col text-center mt-3 mb-4">
+                <span class="text-md text-gray-400">hello</span>
+              </div>
+
+              <p class="px-16 text-center text-md text-gray-800">
+              </p>
+
+              <div class="px-16 mt-3 text-center">
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#후보자</span
+                >
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#추가하기</span
+                >
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#플러스 버튼</span
+                >
+              </div>
+
+              <div class="px-14 mt-5">
+            <img
+              src="/static/img/png/plus.png"
+              alt="Plus Icon"
+              class="mx-auto"
+              onclick="on_edit()"
+            />
+              </div>
+            </div>
+          </div>
+        </div>`;
+      $.ajax({
+        url: "/admin/candidate_endpoint", // 서버의 엔드포인트 URL
+        type: "POST",
+        data: {
+          empty: "empty",
+        },
+        processData: true,
+        success: function (response) {
+          // 요청이 성공적으로 완료됐을 때 실행할 코드
+
+          var data = response.data;
+          let count = 0;
+          console.log(data);
+          if (data != undefined) {
+            data.forEach((element) => {
+              let hash = JSON.parse(element.hash_tag);
+              var promiseArr = [];
+
+              console.log(promiseArr);
+              let has_profile_card = `
+         <div
+          class="mt-10 ml-4 mr-4 bg-white rounded-xl shadow-md overflow-hidden md:max-w-md flex flex-col p-4 px-4 sm:w-1/2 lg:w-1/3"
+        >
+          <div class="md:flex">
+            <div class="w-full p-2 px-4 py-10 ">
+              <div class="flex justify-center">
+                <div class="relative">
+                  <img
+                    src="/static/profile/${element.profile_card}"
+                    class="rounded-full"
+                    width="80"
+                  />
+                </div>
+              </div>
+
+              <div class="flex flex-col text-center mt-3 mb-4">
+                <span class="text-2xl font-medium">${element.name}</span>
+                <span class="text-md text-gray-400">영문 이름</span>
+              </div>
+
+              <p class="px-16 text-center text-md text-gray-800">
+                      ${element.Speech}</a>
+              </p>
+
+              <div class="px-16 mt-3 text-center">
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#${hash.hash_tag_1}</span
+                >
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#${hash.hash_tag_2}</span
+                >
+                <span
+                  class="bg-gray-100 h-5 p-1 px-3 rounded cursor-pointer hover:shadow hover:bg-gray-200"
+                  >#${hash.hash_tag_3}</span
+                >
+              </div>
+
+              <div class="px-14 mt-5">
+                <button
+                  class="h-12 bg-gray-200 w-full text-black text-md rounded hover:shadow hover:bg-gray-300 mb-2"
+                  onclick="detail_modal_open(${count})"
+                >
+                  자세히 보기
+                </button>
+
+                <button
+                  class="h-12 bg-blue-700 w-full text-white text-md rounded hover:shadow hover:bg-blue-800"
+                >
+                  투표 하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+
+              profile_card_wrap.innerHTML += has_profile_card;
+              profile_card_wrap.innerHTML += profile_card;
+
+              var promises = "";
+              Object.entries(JSON.parse(element.promise)).forEach(
+                ([key, value], index) => {
+                  if (value !== null) {
+                    console.log(JSON.parse(element.promise));
+                    promises += index + 1 + ". " + value + "<br/>";
+                  }
+                }
+              );
+              let detailed_modal = `<div
+                id="detail_modal_${count}"
+                class="overflow-y-auto sm:p-0 pt-4 pr-4 pb-20 pl-4 bg-gray-800"
+                style="    display: none; /* 기본적으로 모달은 숨김 상태 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+    z-index: 9999;"
+              >
+                <div class="flex justify-center items-end text-center min-h-screen sm:block">
+                  <div class="bg-gray-600 transition-opacity bg-opacity-75"></div>
+                  <span class="hidden sm:inline-block sm:align-middle sm:h-screen">
+                    ​
+                  </span>
+                  <div
+                    class="inline-block text-left bg-gray-900 rounded-lg overflow-hidden align-bottom transition-all transform shadow-2xl sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
+                    id="detail_profile_view"
+                  >
+                    <div class="items-center w-full mr-auto ml-auto relative max-w-7xl md:px-12 lg:px-24">
+                      <div class="grid grid-cols-1">
+                        <div
+                          class="mt-4 mr-auto mb-4 ml-auto bg-gray-900 max-w-lg"
+                          id="detail_profile_view"
+                        >
+                          <div class="flex flex-col items-center pt-6 pr-6 pb-6 pl-6">
+                            <img
+                              id="detailed_profile"
+                              src="/static/profile/${element.profile_card}"
+                              class="flex-shrink-0 object-cover object-center btn- flex w-16 h-16 mr-auto -mb-8 ml-auto rounded-full shadow-xl"
+                            />
+                            <p
+                              id="detailed_name"
+                              class="mt-8 text-2xl font-semibold leading-none text-white tracking-tighter lg:text-3xl"
+                            >
+                              ${element.name}
+                            </p>
+                            <p
+                              id="detailed_explain"
+                              class="mt-3 text-base leading-relaxed text-center text-gray-200"
+                            >
+                              ${element.message}
+                            </p>
+
+                            <p
+                              id="detailed_promise"
+                              class="mt-3 text-base leading-relaxed text-center text-gray-200"
+                            >
+                              주요 공약:<br/>
+    ${promises}
+                            </p>
+
+                            <p
+                              id="detailed_time"
+                              class="mt-3 text-base leading-relaxed text-center text-gray-200"
+                            >
+                              투표 마감 시간: 2022/06/22 오후 7:15
+                            </p>
+                            <div class="w-full mt-6">
+                              <a
+                                class="flex text-center items-center justify-center w-full pt-4 pr-10 pb-4 pl-10 text-base font-medium text-white bg-indigo-600 rounded-xl transition duration-500 ease-in-out transform hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                onclick="detail_modal_close(${count})"
+                                style="cursor: pointer"
+                              >
+                                확인 완료!
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+              count++;
+              modallist.innerHTML += detailed_modal;
+            });
+          } else {
+            profile_card_wrap.innerHTML += profile_card;
+          }
+        },
+        error: function (xhr, status, error) {
+          // 요청이 실패했을 때 실행할 코드
+          console.error(error);
+        },
+      });
+    };
+
+    onload();
   };
 </script>
